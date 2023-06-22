@@ -1,16 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Contador titulo="Estudiante" v-bind:inicio="402"/>
-  <Contador titulo="Profesor" v-bind:inicio="101"/>
+  <CaracolaMagica />
 </template>
 
 <script>
-import Contador from './components/Contador.vue';
+import CaracolaMagica from './components/CaracolaMagica.vue';
 
 export default {
   name: 'App',
   components: {
-    Contador
+    CaracolaMagica
   },
 }
 </script>
