@@ -9,6 +9,7 @@
     <div>
       <h2>{{ pregunta }}</h2>
       <h1>{{ respuesta }}</h1>
+      <h3>{{ textoImportante }}</h3>
     </div>
   </div>
 </template>
@@ -20,13 +21,15 @@ export default {
       pregunta: "",
       respuesta: "",
       rutaImagen: null,
+      contadorSi: 0,
+      textoImportante: ""
     };
 
   }, watch: {
     pregunta(value, oldValue) {
       console.log(value);
       console.log(oldValue);
-      if (value.includes('?')) {
+      if (value.endsWith('?')) {
         console.log('consumir el api');
         this.consumirAPI()
 
@@ -42,6 +45,16 @@ export default {
       console.log(image);
       this.respuesta = answer
       this.rutaImagen = image
+      if (respuesta.answer === "no") {
+        this.textoImportante = "Triste tu caso";
+      } else if (respuesta.answer === "yes") {
+        this.contadorSi++;
+        if (this.contadorSi % 2 === 0) {
+          this.textoImportante = "Eres el mejor";
+        }else{
+          this.textoImportante = "";
+        }
+      }
     }
   }
 };
@@ -62,23 +75,29 @@ img,
 .bg-dark {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.contenedor{
+
+.contenedor {
   position: relative;
 }
-input{
+
+input {
   width: 250px;
   padding: 1px, 15px;
   border-radius: 5px;
   border: none;
-  background:none ;
-  color: white;
-}
-p,h1,h2{
+  background: none;
   color: white;
 }
 
-p{
+p,
+h1,
+h2,
+h3 {
+  color: white;
+}
+
+p {
   font-size: 20px;
-  margin-top: 0px ;
+  margin-top: 0px;
 }
 </style>
