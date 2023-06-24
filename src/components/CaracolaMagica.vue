@@ -31,6 +31,8 @@ export default {
       console.log(oldValue);
       if (value.endsWith('?')) {
         console.log('consumir el api');
+        //this.pregunta=''
+        this.respuesta = 'Pensando...'
         this.consumirAPI()
 
       }
@@ -100,4 +102,6 @@ p {
   font-size: 20px;
   margin-top: 0px;
 }
+
+
 </style>
