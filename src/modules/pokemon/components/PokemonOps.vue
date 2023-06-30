@@ -1,10 +1,7 @@
 <template>
   <div class="contenedor-opciones">
     <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
+      <li v-for="pokemon in opciones" :key="pokemon.id">{{ pokemon.nombre }}</li>
     </ul>
   </div>
 </template>
@@ -12,6 +9,12 @@
 <script>
 
 export default {
+  props:{
+    opciones:{
+      type: Array,
+      required: true
+    }
+  }
 
 }
 </script>
@@ -19,7 +22,7 @@ export default {
 <style scoped>
 ul {
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 0px;
 }
 
 li {
