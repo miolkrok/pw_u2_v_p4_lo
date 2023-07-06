@@ -61,7 +61,8 @@ export default {
             this.showPokemon = false
             this.logrado = false
             this.perdido = false
-            this.mostrarLabel = true
+            this.mostrarLabel = true,
+            this.perdidoTotal = false
         },
         revisarSeleccion(idSeleccionado) {
             console.log('evento en el padre')
