@@ -41,7 +41,7 @@ li {
 }
 
 li:hover {
-  background-color: cadetblue;
+  background-color: aqua;
 }
 .contenedor-opciones{
   display: flex;

@@ -47,5 +47,6 @@ img {
     height: 200px;
     justify-content: center;
     display: flex;
+    margin-bottom: 5px;
 }
 </style>
