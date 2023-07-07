@@ -22,7 +22,6 @@
     <div class="perdidoTotal" v-if="perdidoTotal">
         <h1>¡HAS PERDIDO EL JUEGO! AGOTASTE TUS INTENTOS {{ intentos }} / 3</h1>
     </div>
-
 </template>
 
 <script>
@@ -58,11 +57,13 @@ export default {
             this.pokemonArr = arregloPokemons
             const indicePokemon = Math.floor(Math.random() * 4)
             this.pokemonCorrecto = this.pokemonArr[indicePokemon]
+            this.mostrarLabel = true
             this.showPokemon = false
             this.logrado = false
             this.perdido = false
-            this.mostrarLabel = true,
             this.perdidoTotal = false
+            this.puntaje = 0;
+            this.intentos = 0;
         },
         revisarSeleccion(idSeleccionado) {
             console.log('evento en el padre')
@@ -86,7 +87,7 @@ export default {
                 this.perdido = true
                 this.perdidoTotal = false
                 this.mostrarLabel = true
-                if (this.intentos>=2) {
+                if (this.intentos >= 2) {
                     this.perdidoTotal = true
                     this.mostrarLabel = false
                     this.perdido = false
@@ -97,9 +98,8 @@ export default {
 
         },
         reiniciarJuego() {
-            this.puntaje = 0;
-            this.intentos = 0;
             this.cargaJuegoInicial();
+
         }
     },
     mounted() {
@@ -111,17 +111,21 @@ export default {
 </script>
 
 <style>
-.perdidoTotal h1, .perdido h3{
+.perdidoTotal h1,
+.perdido h3 {
     color: red;
 }
+
 .ganador h3 {
     color: blue;
 }
-button{
+
+button {
     background-color: aqua;
     border-radius: 5px;
 }
-button:hover{
+
+button:hover {
     background-color: lightgrey;
 }
 </style>
