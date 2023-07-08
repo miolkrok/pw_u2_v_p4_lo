@@ -16,11 +16,13 @@ export default {
 <style>
 div {
     padding: 0 30px;
+    background-color: aliceblue;
+
 }
 div a {
     font-weight: bold;
     /*color: #2c3e50;*/
-    color: blueviolet;
+    color: #6576b4;
     margin: 0 10px;
 }
 </style>

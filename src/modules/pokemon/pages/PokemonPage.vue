@@ -12,6 +12,10 @@
     </div>
     <div class="ganador" v-if="logrado">
         <h3>El Pokemon es: {{ pokemonCorrecto.nombre }}</h3>
+        <div v-if="mostrarMedalla">
+            <h3>Felicidades has ganado tu Medalla {{ nombreMedalla }}</h3>
+            <img :src="medalla" alt="No se puede ver la imagen">
+        </div>
         <h3>Felicidades has ganado el juego con {{ puntaje }} puntos!</h3>
     </div>
     <div class="perdido" v-if="perdido">
@@ -40,6 +44,9 @@ export default {
             perdido: false,
             mostrarLabel: true,
             perdidoTotal: false,
+            medalla: null,
+            nombreMedalla: "",
+            mostrarMedalla: false,
             puntaje: 0,
             intentos: 0
 
@@ -62,6 +69,7 @@ export default {
             this.logrado = false
             this.perdido = false
             this.perdidoTotal = false
+            this.mostrarMedalla = false
             this.puntaje = 0;
             this.intentos = 0;
         },
@@ -76,18 +84,29 @@ export default {
                 this.perdidoTotal = false
                 if (this.intentos == 0) {
                     this.puntaje += 5;
+                    this.mostrarMedalla = true
+                    this.nombreMedalla = "Reliquia"
+                    this.medalla = "https://images.wikidexcdn.net/mwuploads/wikidex/e/e2/latest/20090913184435/Medalla_Reliquia.png"
                 } else if (this.intentos == 1) {
+                    this.mostrarMedalla = true
+                    this.nombreMedalla = "Bosque"
+                    this.medalla = "https://images.wikidexcdn.net/mwuploads/wikidex/7/75/latest/20090913184353/Medalla_Bosque.png",
                     this.puntaje += 2;
                 } else if (this.intentos == 2) {
+                    this.mostrarMedalla = true
+                    this.nombreMedalla = "Lignito"
+                    this.medalla = "https://images.wikidexcdn.net/mwuploads/wikidex/0/0b/latest/20140218004352/Medalla_Lignito.png"
                     this.puntaje += 1;
                 }
             } else {
+                this.mostrarMedalla = false
                 this.showPokemon = false
                 this.logrado = false
                 this.perdido = true
                 this.perdidoTotal = false
                 this.mostrarLabel = true
                 if (this.intentos >= 2) {
+                    this.mostrarMedalla = false
                     this.perdidoTotal = true
                     this.mostrarLabel = false
                     this.perdido = false
@@ -111,6 +130,12 @@ export default {
 </script>
 
 <style>
+
+.ganador img{
+    width: 200px;
+    height: 200px;
+}
+
 .perdidoTotal h1,
 .perdido h3 {
     color: red;
